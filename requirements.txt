@@ -4,6 +4,7 @@ sqlalchemy
 passlib
 bcrypt
 python-multipart
+python-dotenv
 python-jose
 aiofiles
 requests

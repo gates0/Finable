@@ -2,21 +2,23 @@
 # from fastapi import FastAPI, status, Response
 # from enum import Enum
 from fastapi import FastAPI, Request
-from router import user
+from router import users,  otp
 from auth import authentication
-from db import models
-from db.database import engine
+from models import user
+from db.database import engine, Base
 from fastapi.responses import JSONResponse, PlainTextResponse, HTMLResponse
 from fastapi.middleware.cors import CORSMiddleware
 import time
+from router import users
 
 
 app = FastAPI()
 
-app.include_router(user.router)
+app.include_router(users.router, prefix = '/user', tags = ['user'])
+app.include_router(otp.router, prefix = '/otp', tags = ['otp'])
 app.include_router(authentication.router)
 
-models.Base.metadata.create_all(engine)
+Base.metadata.create_all(engine)
 
 @app.middleware("http")
 async def add_middleware(request: Request, call_next):
