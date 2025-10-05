@@ -9,5 +9,5 @@ python-jose
 aiofiles
 requests
 pytest 
-jinja
+jinja2
 websockets
