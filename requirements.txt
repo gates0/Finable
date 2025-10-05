@@ -11,3 +11,4 @@ requests
 pytest 
 jinja2
 websockets
+email-validator
