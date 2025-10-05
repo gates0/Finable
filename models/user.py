@@ -21,6 +21,7 @@ class User(Base):
 
     otps = relationship("OTP", back_populates="user")
     refresh_tokens = relationship("RefreshToken", back_populates="user", cascade="all, delete-orphan")
+    campaigns = relationship("Campaign", back_populates="user", cascade="all, delete-orphan")
 
    
 

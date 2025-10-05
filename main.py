@@ -2,7 +2,7 @@
 # from fastapi import FastAPI, status, Response
 # from enum import Enum
 from fastapi import FastAPI, Request
-from router import users,  otp
+from router import users, otp, campaign
 from auth import authentication
 from models import user
 from db.database import engine, Base
@@ -16,6 +16,7 @@ app = FastAPI()
 
 app.include_router(users.router, prefix = '/user', tags = ['user'])
 app.include_router(otp.router, prefix = '/otp', tags = ['otp'])
+app.include_router(campaign.router, prefix = '/campaign', tags = ['campaign'])
 app.include_router(authentication.router)
 
 Base.metadata.create_all(engine)
