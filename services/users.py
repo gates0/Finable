@@ -23,7 +23,7 @@ def create_user(db: Session, request: UserCreate):
     new_user = User(
         username = request.username,
         email = request.email,
-        hashed_password = Hash.bcrypt(request.password),
+        hashed_password = Hash.bcrypt(request.password[:72]),
         otp_expiry = otp_expiry()
     )
     db.add(new_user)
